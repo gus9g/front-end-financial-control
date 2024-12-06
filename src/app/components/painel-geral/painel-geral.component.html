@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h2>Painel Geral</h2>
+    <div class="form-group">
+      <label for="anoSelect">Selecione o Ano:</label>
+      <select
+        id="anoSelect"
+        class="form-control"
+        [(ngModel)]="anoSelecionado"
+        (change)="atualizarGrafico()"
+      >
+        <option *ngFor="let ano of anosDisponiveis" [value]="ano">{{ ano }}</option>
+      </select>
+    </div>
+  
+    <div *ngIf="loading" class="mt-3">
+      <p>Carregando dados...</p>
+    </div>
+    <div *ngIf="errorMessage" class="mt-3 text-danger">
+      <p>{{ errorMessage }}</p>
+    </div>
+  
+    <div *ngIf="!loading && !errorMessage" class="mt-4">
+      <canvas #boletoChart></canvas>
+    </div>
+  </div>
+  

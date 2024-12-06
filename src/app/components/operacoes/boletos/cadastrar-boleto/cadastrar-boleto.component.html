@@ -1,0 +1,66 @@
+<div class="cadastro-boleto">
+  <div class="cadastro-boleto__form">
+    <h2 class="cadastro-boleto__title">Cadastrar Boleto</h2>
+    <form class="cadastro-boleto__form-body" (ngSubmit)="cadastrarBoleto()">
+      <div class="cadastro-boleto__field">
+        <label class="cadastro-boleto__label" for="valor">Valor:</label>
+        <input
+          class="cadastro-boleto__input"
+          type="text"
+          id="valor"
+          [(ngModel)]="boleto.valor"
+          name="valor"
+          required
+        />
+      </div>
+
+      <div class="cadastro-boleto__field">
+        <label class="cadastro-boleto__label" for="dataVencimento">Data de Vencimento:</label>
+        <input
+          class="cadastro-boleto__input"
+          type="date"
+          id="dataVencimento"
+          [(ngModel)]="boleto.dataVencimento"
+          name="dataVencimento"
+          required
+        />
+      </div>
+
+      <div class="cadastro-boleto__field">
+        <label class="cadastro-boleto__label" for="descricao">Descrição:</label>
+        <input
+          class="cadastro-boleto__input"
+          type="text"
+          id="descricao"
+          [(ngModel)]="boleto.descricao"
+          name="descricao"
+          required
+        />
+      </div>
+
+      <button class="cadastro-boleto__button" type="submit">Cadastrar</button>
+    </form>
+  </div>
+
+  <div class="cadastro-boleto__upload">
+    <h2 class="cadastro-boleto__title">Upload de Planilha</h2>
+    <form class="cadastro-boleto__form-body" (submit)="onUploadFile($event)">
+      <div class="cadastro-boleto__field">
+        <input
+          class="cadastro-boleto__input-file"
+          type="file"
+          (change)="onFileSelected($event)"
+          accept=".xlsx, .xls, .csv"
+        />
+      </div>
+      <button
+        class="cadastro-boleto__button"
+        type="submit"
+        [disabled]="!selectedFile"
+      >
+        Enviar Planilha
+      </button>
+    </form>
+    <p class="cadastro-boleto__message" *ngIf="uploadMessage">{{ uploadMessage }}</p>
+  </div>
+</div>

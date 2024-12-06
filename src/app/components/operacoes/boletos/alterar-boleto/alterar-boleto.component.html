@@ -1,0 +1,132 @@
+<div class="boleto-form">
+    <h2 class="boleto-form__title">Formulário de Alteração de Boleto</h2>
+
+    <div class="boleto-form__container">
+        <form [formGroup]="editBoletoForm" (ngSubmit)="onSubmit()"
+            class="boleto-form__form">
+            <div class="boleto-form__field">
+                <label for="valor" class="boleto-form__label">Valor:</label>
+                <input
+                    type="text"
+                    id="valor"
+                    formControlName="valor"
+                    name="valor"
+                    class="boleto-form__input"
+                    required />
+            </div>
+
+            <div class="boleto-form__field">
+                <label for="dataVencimento" class="boleto-form__label">Data de
+                    Vencimento:</label>
+                <input
+                    type="date"
+                    id="dataVencimento"
+                    formControlName="dataVencimento"
+                    name="dataVencimento"
+                    class="boleto-form__input"
+                    required />
+            </div>
+
+            <div class="boleto-form__field">
+                <label for="descricao"
+                    class="boleto-form__label">Descrição:</label>
+                <input
+                    type="text"
+                    id="descricao"
+                    formControlName="descricao"
+                    name="descricao"
+                    class="boleto-form__input"
+                    required />
+            </div>
+
+            <div class="boleto-form__field">
+                <label for="situacao"
+                    class="boleto-form__label">Situação:</label>
+                <select
+                    id="situacao"
+                    formControlName="situacao"
+                    name="situacao"
+                    class="boleto-form__select"
+                    required>
+                    <option value disabled selected>Selecione a
+                        situação</option>
+                    <option value="1">Pendente</option>
+                    <option value="2">Pago</option>
+                    <option value="3">Reservado</option>
+                </select>
+            </div>
+
+            <div class="boleto-form__field">
+                <label for="dataPagamento" class="boleto-form__label">Data
+                    Pagamento:</label>
+                <input
+                    type="text"
+                    id="dataPagamento"
+                    formControlName="dataPagamento"
+                    name="dataPagamento"
+                    class="boleto-form__input" />
+            </div>
+
+            <div class="boleto-form__actions">
+                <button type="submit" class="boleto-form__button">Salvar
+                    Alterações</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<br><br>
+
+<div class="boleto-list">
+    <h2 class="boleto-list__title">Lista de Boletos</h2>
+
+    <div class="boleto-list__content">
+        <div class="boleto-list__table-wrapper">
+            <table class="boleto-list__table">
+                <thead class="boleto-list__table-head">
+                    <tr>
+                      <th class="boleto-list__table-header">Tipo</th>
+                      <th class="boleto-list__table-header">Descrição</th>
+                      <th class="boleto-list__table-header">Valor</th>
+                      <th class="boleto-list__table-header">Data Fechamento</th>
+                      <th class="boleto-list__table-header">Data Vencimento</th>
+                      <th class="boleto-list__table-header">Data Pagamento</th>
+                      <th class="boleto-list__table-header">Valor Pago</th>
+                      <th class="boleto-list__table-header">Reservado</th>
+                      <th class="boleto-list__table-header">Observacoes</th>
+                      <th class="boleto-list__table-header">Situação</th>
+                    </tr>
+                  </thead>
+                  <tbody class="boleto-list__table-body">
+                    <tr class="boleto-list__row" *ngFor="let boleto of paginatedBoletos">
+                      <td class="boleto-list__cell">{{ boleto.tipo }}</td>
+                      <td class="boleto-list__cell">{{ boleto.descricao }}</td>
+                      <td class="boleto-list__cell">{{ boleto.valor }}</td>
+                      <td class="boleto-list__cell">{{ boleto.dataFechamento }}</td>
+                      <td class="boleto-list__cell">{{ boleto.dataVencimento }}</td>
+                      <td class="boleto-list__cell">{{ boleto.dataPagamento }}</td>
+                      <td class="boleto-list__cell">{{ boleto.valorPago }}</td>
+                      <td class="boleto-list__cell">{{ boleto.reservado }}</td>
+                      <td class="boleto-list__cell">{{ boleto.observacoes }}</td>
+                      <td class="boleto-list__cell">{{ this.getNomeSituacao(boleto.situacao) }}</td>              
+                    </tr>
+                  </tbody>
+            </table>
+        </div>
+
+        <div class="boleto-list__pagination">
+            <button
+                class="boleto-list__button boleto-list__button--prev"
+                (click)="prevPage()"
+                [disabled]="currentPage === 1">
+                Anterior
+            </button>
+            <button
+                class="boleto-list__button boleto-list__button--next"
+                (click)="nextPage()"
+                [disabled]="currentPage === totalPages">
+                Próxima
+            </button>
+        </div>
+    </div>
+</div>

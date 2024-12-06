@@ -1,0 +1,90 @@
+/* Menu principal */
+nav {
+    border-bottom: 1px #cdcdcd solid;
+    overflow: hidden;
+    height: 30vh; //gambiarra para fazer o dropdown menu aparecer
+  }
+  
+  nav a, .dropbtn {
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+  }
+  
+  nav a:hover, .dropdown:hover .dropbtn {
+    // background-color: #ddd;
+    color: black;
+  }
+  
+  /* Dropdown principal */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    float: left;
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Valor alto para garantir que o dropdown apareça acima dos outros componentes */
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Exibir dropdown ao passar o mouse */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Submenu */
+  .submenu {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .submenu-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 160px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1010;
+  }
+  
+  .submenu-content a {
+    padding: 12px 16px;
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .submenu-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Exibir submenu ao passar o mouse */
+  .submenu:hover .submenu-content {
+    display: block;
+  }
+  
